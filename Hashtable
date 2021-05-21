@@ -1,0 +1,19 @@
+class HashTable:
+    
+    #Initializes the hash table with 10 buckets
+    def __init__(self, capacity=10):
+        self.root = []
+        for i in range(capacity):
+            self.root.append([])
+    
+    #Basic function to hash the data into the buckets
+    def hash_bucket(self, key):
+        return key % len(self.root)
+
+    def HashInsert(hashTable, item):
+        if (HashSearch(hashTable, item->key) == null) {
+            bucketList = hashTable[Hash(item->key)]
+            node = Allocate new linked list node
+            node->next = null
+            node->data = item
+            ListAppend(bucketList, node)
