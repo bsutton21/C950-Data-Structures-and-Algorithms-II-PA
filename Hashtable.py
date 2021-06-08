@@ -1,3 +1,5 @@
+# Blake Sutton  -- Student ID: 001109490 
+
 #Implements the hash table to fulfill requirement E
 class HashTable:
     
