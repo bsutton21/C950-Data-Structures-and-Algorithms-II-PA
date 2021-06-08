@@ -31,5 +31,4 @@ def next_location(current_location, truckload):
 
     for pack_num in truckload:
 
-        package = package_table.get_item
-        
+        package = package_table.

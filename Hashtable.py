@@ -2,7 +2,6 @@
 
 #Implements the hash table to fulfill requirement E
 class HashTable:
-    
     # Initializes the hash table with 10 buckets
     def __init__(self, capacity=10):
         self.root = []
