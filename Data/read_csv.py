@@ -4,14 +4,16 @@ import csv
 import datetime
 
 # Reads in the distances between each of the locations
-with open('Distances.csv') as csvfile:
-    distance_csv = csv.reader(csvfile, delimiter=',')
-    distance_csv = list(distance_csv)
+def read_distances():
+    with open('Distances.csv') as csvfile:
+        distance_csv = csv.reader(csvfile, delimiter=',')
+        distance_csv = list(distance_csv)
 
 # Reads in the names of all of the possible delivery locations
-with open('Packages.csv') as csvfile:
-    packages_csv = csv.reader(csvfile, delimiter=',')
-    packages_csv = list(packages_csv)
+def read_packages():
+    with open('Packages.csv') as csvfile:
+        packages_csv = csv.reader(csvfile, delimiter=',')
+        packages_csv = list(packages_csv)
 
 # This calculates the distance between two locations
 # Complexity is O(1)
