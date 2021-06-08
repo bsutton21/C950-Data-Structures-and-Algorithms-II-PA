@@ -2,6 +2,7 @@
 
 import csv
 import datetime
+from hashtable import *
 
 # Reads in the distances between each of the locations
 def read_distances():
