@@ -11,7 +11,7 @@ class HashTable:
     def hash_bucket(self, key):
         return key % len(self.root)
 
-    def insert(self, key, item):
+    def add(self, key, item):
         # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
         # Appends the current value to the bucket
@@ -40,3 +40,7 @@ class HashTable:
         for item in bucket_items:
             if item.package_id == key:
                 bucket_items.remove(item)
+                return True
+            else:
+                return False
+        

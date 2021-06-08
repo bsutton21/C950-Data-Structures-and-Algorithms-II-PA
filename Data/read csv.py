@@ -11,11 +11,22 @@ with open('Packages.csv') as csvfile:
     packages_csv = csv.reader(csvfile, delimiter=',')
     packages_csv = list(packages_csv)
 
+# This calculates the distance between two locations
+# Complexity is O(1)
 def check_distance(rowval, columnval, sum):
     distance = distance_csv[rowval][columnval]
     if distance is '':
         distance = distance_csv[rowval][columnval]
-    
+
     sum += float(distance)
     return sum
+
+# This is similar to the function above but instead just returns the current distance
+# Complexity is O(1)
+def current_distance(rowval, columnval):
+    distance = distance_csv[rowval][columnval]
+    if distance is'':
+        distance = distance_csv[rowval][columnval]
+
+    return float(distance)
 

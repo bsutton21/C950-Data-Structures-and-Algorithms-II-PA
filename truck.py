@@ -6,3 +6,4 @@ class Truck:
     mph: int
     departure_time: clock
     packages:List[]
+
