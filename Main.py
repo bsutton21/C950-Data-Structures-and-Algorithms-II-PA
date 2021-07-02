@@ -26,7 +26,7 @@ package_table = read_packages
 distance_table = read_distances
 
 visited_locations = []
-def next_location(current_location, truckload):
+def dijkstra_sp(current_location, truckload):
     """
     # Arbitrarily initializing the shortest_route variable so that it's longer than the longest possible route.
     # This has the effect of <any> route being shorter, even if there's only one left.
@@ -42,10 +42,15 @@ def next_location(current_location, truckload):
     start_dist = 0
 
     while(len(unvisited) != 0):
-        current_loc = pop.unvisited(0)
+        current_loc = unvisited.pop(0)
 
         for loc in unvisited:
             current_dist = current_loc.get_distance(loc.loc_id)
+            alternate_path = current_loc.shortest_known_path + current_dist
+
+            if alternate_path < loc.shortest_known_path:
+                loc.shortest_known_path = alternate_path
+                loc.previous_location = current_loc
 
     
     for pack_num in truckload:
