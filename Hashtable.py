@@ -18,7 +18,7 @@ class HashTable:
         # Appends the current value to the bucket
         self.root[bucket].append(item)
 
-    def get_item(self,key):
+    def get(self,key):
         # Gets the buck ID/key from the hash
         bucket = self.hash_bucket(key)
         # Gets the items currently in the bucket

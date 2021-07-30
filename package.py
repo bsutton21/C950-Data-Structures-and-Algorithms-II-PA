@@ -1,5 +1,10 @@
 # Blake Sutton  -- Student ID: 001109490 
 
+from distance import *
+from read_csv import *
+
+import datetime
+
 class Package(object):
     def __init__(self, plist):
         self.package_id = int(plist[0])
@@ -24,3 +29,16 @@ class Package(object):
         print("Notes: %s" % self.notes)
         print("Delivery Time: %s" % self.delivery_time)
         print("Status: %s" % self.delivery_status)
+
+    first_delivery = []
+    second_delivery = []
+    third_delivery = []
+    first_truck_dist_list = []
+    second_truck_dist_list = []
+    third_truck_dist_list = []
+    # the times below represent the times that each truck leaves the hub
+    first_time = '8:00:00'
+    second_time = '9:10:00'
+    third_time = '11:00:00'
+
+    

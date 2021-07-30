@@ -9,3 +9,4 @@ class Truck:
     departure_time: clock
     packages:List[]
 
+###### IS THIS EVEN NEEDED AT THIS POINT?!?!?  ####
