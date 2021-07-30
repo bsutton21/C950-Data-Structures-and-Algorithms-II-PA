@@ -44,4 +44,3 @@ class HashTable:
                 return True
             else:
                 return False
-        

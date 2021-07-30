@@ -81,3 +81,12 @@ def sort_packages():
     truck2 = [3,5,6,7,18,22,25,26,28,29,31,32,36,37,38]
     truck3 = [2,8,9,10,11,12,17,23,27,30,33,35]
     return truck1, truck2, truck3
+
+def first_truck_status():
+    return first_truck
+    
+def second_truck_status():
+    return second_truck
+
+def third_truck_status():
+    return third_truck

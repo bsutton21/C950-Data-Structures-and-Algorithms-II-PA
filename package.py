@@ -33,9 +33,9 @@ class Package(object):
     first_delivery = []
     second_delivery = []
     third_delivery = []
-    first_truck_dist_list = []
-    second_truck_dist_list = []
-    third_truck_dist_list = []
+    first_truck = []
+    second_truck = []
+    third_truck = []
     # the times below represent the times that each truck leaves the hub
     first_time = '8:00:00'
     second_time = '9:10:00'
@@ -49,4 +49,10 @@ class Package(object):
     (h, m, s) = third_time.split(':')
     convert_third_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
 
-    
+    # Updates the delivery status of all packages in truck 1 when it leaves the station
+    i = 0
+    # O(N)
+    for value in first_truck_status():
+        first_truck_staus()[i][9] = first_time
+        first_delivery.append(first_truck_status()[i])
+        i+=1
