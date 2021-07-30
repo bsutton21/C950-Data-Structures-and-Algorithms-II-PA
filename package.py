@@ -41,4 +41,12 @@ class Package(object):
     second_time = '9:10:00'
     third_time = '11:00:00'
 
+    # Convert string datetime into datetime.timedelta
+    (h, m, s) = first_time.split(':')
+    convert_first_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+    (h, m, s) = second_time.split(':')
+    convert_second_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+    (h, m, s) = third_time.split(':')
+    convert_third_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+
     
