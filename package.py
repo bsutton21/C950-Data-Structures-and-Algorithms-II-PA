@@ -56,3 +56,19 @@ class Package(object):
         first_truck_staus()[i][9] = first_time
         first_delivery.append(first_truck_status()[i])
         i+=1
+
+    # Compares the addresses on truck one to the main address list and adds the address index to the list
+    # O(N^2)
+    try:
+        first_count = 0
+        for j in first_delivery:
+            for k in distance.check_address():
+                if k[2] == j[2]:
+                    first_truck.append(j[0])
+                    first_delivery[first_count][1] = j[0]
+            first_count += 1
+    except IndexError:
+        pass
+
+    calc_short_dist(first_delivery, 1, 0)
+    first_truck_dist = 0
