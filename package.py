@@ -1,7 +1,7 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from Distance import *
-from Read_csv import *
+from distance import *
+from read_csv import *
 
 import datetime
 
@@ -49,7 +49,7 @@ class Package(object):
     (h, m, s) = third_time.split(':')
     convert_third_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
 
-    # Updates the delivery status of all packages in truck 1 when it leaves the station
+    # Updates the delivery status of all packages in the first truck when it leaves the station
     i = 0
     # O(N)
     for value in first_truck_status():
@@ -57,7 +57,7 @@ class Package(object):
         first_delivery.append(first_truck_status()[i])
         i+=1
 
-    # Compares the addresses on truck one to the main address list and adds the address index to the list
+    # Compares the addresses on the first truck to the main address list and adds the address index to the list
     # O(N^2)
     try:
         first_count = 0
@@ -72,3 +72,104 @@ class Package(object):
 
     calc_short_dist(first_delivery, 1, 0)
     first_truck_dist = 0
+
+    # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
+    # O(N)
+    first_truck_pack_id = 0
+    for index in range(len(first_opt_truck_ind())):
+        try:
+            # Calculate the total distance of the truck
+            first_truck_dist = calc_short_dist(int(first_opt_truck_ind()[index]), int(first_opt_truck_ind()[index + 1]), first_truck_dist)
+            # Calculate the distance of each pacakage along the route
+            package_delivery = calc_short_dist(current_distance(int(first_opt_truck_ind()[index]), int(first_opt_truck_ind()[index + 1])))
+            first_opt_truck()[first_truck_pack_id][10] = (str(package_delivery))
+            get_hashtable.update(int(first_opt_truck()[first_truck_pack_id][10]), first_delivery)
+            first_truck_pack_id += 1
+        except IndexError:
+            pass
+
+    # Updates the delivery status of all packages in the second truck when it leaves the station
+    i = 0
+    # O(N)
+    for value in second_truck_status():
+        second_truck_staus()[i][9] = second_time
+        second_delivery.append(second_truck_status()[i])
+        i+=1
+
+    # Compares the addresses on the second truck to the main address list and adds the address index to the list
+    # O(N^2)
+    try:
+        second_count = 0
+        for j in second_delivery:
+            for k in distance.check_address():
+                if k[2] == j[2]:
+                    second_truck.append(j[0])
+                    second_delivery[second_count][1] = j[0]
+            second_count += 1
+    except IndexError:
+        pass
+
+    calc_short_dist(second_delivery, 1, 0)
+    second_truck_dist = 0
+
+    # Same as with the first truck
+    # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
+    # O(N)
+    second_truck_pack_id = 0
+    for index in range(len(second_opt_truck_ind())):
+        try:
+            # Calculate the total distance of the truck
+            second_truck_dist = calc_short_dist(int(second_opt_truck_ind()[index]), int(second_opt_truck_ind()[index + 1]), second_truck_dist)
+            # Calculate the distance of each pacakage along the route
+            package_delivery = calc_short_dist(current_distance(int(second_opt_truck_ind()[index]), int(second_opt_truck_ind()[index + 1])))
+            second_opt_truck()[second_truck_pack_id][10] = (str(package_delivery))
+            get_hashtable.update(int(second_opt_truck()[second_truck_pack_id][10]), second_delivery)
+            second_truck_pack_id += 1
+        except IndexError:
+            pass
+
+    # Updates the delivery status of all packages in the third truck when it leaves the station
+    i = 0
+    # O(N)
+    for value in third_truck_status():
+        third_truck_staus()[i][9] = third_time
+        third_delivery.append(third_truck_status()[i])
+        i+=1
+
+    # Compares the addresses on the third truck to the main address list and adds the address index to the list
+    # O(N^2)
+    try:
+        third_count = 0
+        for j in third_delivery:
+            for k in distance.check_address():
+                if k[2] == j[2]:
+                    third_truck.append(j[0])
+                    third_delivery[third_count][1] = j[0]
+            third_count += 1
+    except IndexError:
+        pass
+
+    calc_short_dist(third_delivery, 1, 0)
+    third_truck_dist = 0
+
+    # Same as with the first two trucks
+    # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
+    # O(N)
+    third_truck_pack_id = 0
+    for index in range(len(third_opt_truck_ind())):
+        try:
+            # Calculate the total distance of the truck
+            third_truck_dist = calc_short_dist(int(third_opt_truck_ind()[index]), int(third_opt_truck_ind()[index + 1]), third_truck_dist)
+            # Calculate the distance of each pacakage along the route
+            package_delivery = calc_short_dist(current_distance(int(third_opt_truck_ind()[index]), int(third_opt_truck_ind()[index + 1])))
+            third_opt_truck()[third_truck_pack_id][10] = (str(package_delivery))
+            get_hashtable.update(int(third_opt_truck()[third_truck_pack_id][10]), third_delivery)
+            third_truck_pack_id += 1
+        except IndexError:
+            pass
+
+    # Calculates the total distance traveled by all three trucks
+    # O(1)
+    def total_distance():
+        total_distance = first_truck_dist + second_truck_dist + third_truck_dist
+        return total_distance
