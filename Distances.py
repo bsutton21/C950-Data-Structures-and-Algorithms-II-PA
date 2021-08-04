@@ -1,8 +1,16 @@
 # Blake Sutton  -- Student ID: 001109490 
 
+import datetime
+from ReadCSVData import first_truck_status
 import csv
 
 class Distance:
+
+    # Reads in the addresses for each location/stop
+    with open('Addresses.csv') as csvfile:
+        addresses_csv = csv.reader(csvfile, delimiter=',')
+        addresses_csv = list(addresses_csv)
+
     # Reads in the distances between each of the locations     
     with open('Distances.csv') as csvfile:
         distances_csv = csv.reader(csvfile, delimiter=',')
@@ -20,9 +28,9 @@ class Distance:
         # This calculates the distance between two locations
         # Complexity is O(1)
         def check_distance(rowval, columnval, sum):
-            distance = distances_csv[rowval][columnval]
+            distance = addresses_csv[rowval][columnval]
             if distance is '':
-                distance = distances_csv[rowval][columnval]
+                distance = addresses_csv[rowval][columnval]
 
             sum += float(distance)
             return sum
@@ -30,9 +38,9 @@ class Distance:
         # This is similar to the function above but instead just returns the current distance
         # Complexity is O(1)
         def current_distance(rowval, columnval):
-            distance = distances_csv[rowval][columnval]
+            distance = addresses_csv[rowval][columnval]
             if distance is'':
-                distance = distances_csv[rowval][columnval]
+                distance = addresses_csv[rowval][columnval]
 
             return float(distance)
 
@@ -48,7 +56,7 @@ class Distance:
             new_time = distance/18
             dist_in_min = '{0:02.0f}:{1:02.0f}'.format(*divmod(new_time * 60, 60))
             final_time = dist_in_min + ':00'
-            first_truck.append(final_time)
+            first_truck_status.append(final_time)
             sum = datetime.timedelta()
             for i in first_truck:
                 (h, m, s) = i.split(':')
