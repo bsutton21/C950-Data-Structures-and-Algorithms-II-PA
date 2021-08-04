@@ -1,8 +1,7 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from Read_csv import *
-import sys
-from Distance import *
+from ReadCSVData import *
+from Distances import *
 import datetime
 from Packages import *
 

@@ -6,17 +6,15 @@ from Hashtable import HashTable
 
 create_hash_table = HashTable()  # Calls the Hashtable class to create an object of Hashtable
 
+first_truck = []  # list to represent the first truck delivery
+second_truck = [] # list to represent the second truck delivery
+third_truck = [] # list to represent the third truck delivery
+
 # Reads in the addresses for each location/stop
 def read_addresses():
     with open('Addresses.csv') as csvfile:
         addresses_csv = csv.reader(csvfile, delimiter=',')
         addresses_csv = list(addresses_csv)
-
-# Reads in the distances between each of the locations
-def read_distances():
-    with open('Distances.csv') as csvfile:
-        distances_csv = csv.reader(csvfile, delimiter=',')
-        distances_csv = list(distances_csv)
 
 # Reads in the names of all of the possible delivery locations
 def read_packages():
@@ -27,12 +25,8 @@ def read_packages():
 def read_full_address_data():
     with open('Full Package Data.csv') as csvfile:
         full_package_csv = csv.reader(csvfile, delimiter=',')
-        
-        first_truck = []  # list to represent the first truck delivery
-        second_truck = [] # list to represent the second truck delivery
-        third_truck = [] # list to represent the third truck delivery
 
-        for row in full_package_data:
+        for row in full_package_csv:
             package_ID_row_value = row[0]
             address_row_value = row[1]
             city_row_value = row[2]
@@ -74,7 +68,7 @@ def read_full_address_data():
             create_hash_table.add(key, value)
 
 def get_hashtable():
-    return insert_into_hashtable
+    return create_hash_table
 
 def sort_packages():
     truck1 = [1,4,13,14,15,16,19,20,21,24,34,39,40]

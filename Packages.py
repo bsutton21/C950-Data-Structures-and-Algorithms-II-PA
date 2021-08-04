@@ -1,7 +1,7 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from Distance import *
-from Read_csv import *
+from Distances import *
+from ReadCSVData import *
 
 import datetime
 
@@ -19,7 +19,7 @@ class Package(object):
         self.delivery_status = "At hub"
     
     def print_package(self):
-        Print("Package ID: %i" % self.package_id)
+        print("Package ID: %i" % self.package_id)
         print("Address:  %s" % self.address)
         print("City: %s" % self.city)
         print("State: %s" % self.state)
