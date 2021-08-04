@@ -1,6 +1,6 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from distance import *
+from Distance.py import *
 from read_csv import *
 
 import datetime
