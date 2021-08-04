@@ -152,7 +152,8 @@ class Distance:
                             current_loc = new_location
                             calc_short_dist(truck_dist_list, 3, current_loc)
 
-    first_opt_truck_ind_list.insert(0, '0')
+    # first_opt_truck_ind_list.insert(0, '0')
+
     # O(1)
     def first_opt_truck():
         return first_opt_truck

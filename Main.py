@@ -1,8 +1,8 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from read_csv import *
+from Read_csv import *
 import sys
-from distance import Distance
+from Distance import Distance
 import datetime
 
 package_table = read_packages

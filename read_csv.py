@@ -2,7 +2,7 @@
 
 import csv
 import datetime
-from hashtable import HashTable
+from Hashtable import HashTable
 
 create_hash_table = HashTable()  # Calls the Hashtable class to create an object of Hashtable
 
