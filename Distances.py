@@ -151,6 +151,8 @@ class Distance:
                             truck_dist_list.pop(pop_value)
                             current_loc = new_location
                             calc_short_dist(truck_dist_list, 3, current_loc)
+            except IndexError:
+                pass
 
     # first_opt_truck_ind_list.insert(0, '0')
 

@@ -2,8 +2,9 @@
 
 from Read_csv import *
 import sys
-from Distance import Distance
+from Distance import *
 import datetime
+from Package import *
 
 package_table = read_packages
 distance_table = read_distances
