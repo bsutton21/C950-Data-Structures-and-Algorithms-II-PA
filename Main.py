@@ -8,10 +8,13 @@ from Packages import *
 package_table = read_packages
 distance_table = read_distances
 
+distances = Distance()
+packages = Package()
+
 class Main:
     # This displays when the programs is started
     print('Welcome to the WGUPS package tracking system!')
-    print('Current route was completed in', "{0:.2f}".format(total_distance(), 2), 'miles.')
+    print('Current route was completed in', "{0:.2f}".format(Package.total_distance(), 2), 'miles.')
     start = input("To begin, please type 'lookup' to search for an individual package or "
                   "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program.")
 

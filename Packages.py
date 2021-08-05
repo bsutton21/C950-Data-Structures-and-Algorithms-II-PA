@@ -171,8 +171,5 @@ class Package(object):
     # Calculates the total distance traveled by all three trucks
     # O(1)
     def total_distance():
-        total_distance = first_truck_dist + second_truck_dist + third_truck_dist
+        total_distance = Package.first_truck_dist + Package.second_truck_dist + Package.third_truck_dist
         return total_distance
-
-    def get_first_dist():
-        return first_truck_dist
