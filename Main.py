@@ -6,7 +6,7 @@ import datetime
 from Packages import *
 
 package_table = read_packages
-distance_table = read_distances
+distance_table = Distance.read_distances
 
 distances = Distance()
 packages = Package()

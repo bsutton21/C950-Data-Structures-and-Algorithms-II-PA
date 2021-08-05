@@ -53,7 +53,7 @@ class Package(object):
     i = 0
     # O(N)
     for value in first_truck_status():
-        first_truck_staus()[i][9] = first_time
+        Distance.first_truck_staus()[i][9] = first_time
         first_delivery.append(first_truck_status()[i])
         i+=1
 
