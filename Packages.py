@@ -1,6 +1,6 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from Distances import *
+from Distances import Distance
 from ReadCSVData import *
 
 import datetime
@@ -62,7 +62,7 @@ class Package(object):
     try:
         first_count = 0
         for j in first_delivery:
-            for k in distance.check_address():
+            for k in Distance.check_address():
                 if k[2] == j[2]:
                     first_truck.append(j[0])
                     first_delivery[first_count][1] = j[0]
@@ -70,20 +70,20 @@ class Package(object):
     except IndexError:
         pass
 
-    calc_short_dist(first_delivery, 1, 0)
+    Distance.calc_short_dist(first_delivery, 1, 0)
     first_truck_dist = 0
 
     # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
     # O(N)
     first_truck_pack_id = 0
-    for index in range(len(first_opt_truck_ind())):
+    for index in range(len(Distance.first_opt_truck_ind())):
         try:
             # Calculate the total distance of the truck
-            first_truck_dist = calc_short_dist(int(first_opt_truck_ind()[index]), int(first_opt_truck_ind()[index + 1]), first_truck_dist)
+            first_truck_dist = Distance.calc_short_dist(int(Distance.first_opt_truck_ind()[index]), int(Distance.first_opt_truck_ind()[index + 1]), first_truck_dist)
             # Calculate the distance of each pacakage along the route
-            package_delivery = calc_short_dist(current_distance(int(first_opt_truck_ind()[index]), int(first_opt_truck_ind()[index + 1])))
-            first_opt_truck()[first_truck_pack_id][10] = (str(package_delivery))
-            get_hashtable.update(int(first_opt_truck()[first_truck_pack_id][10]), first_delivery)
+            package_delivery = Distance.calc_short_dist(Distance.current_distance(int(Distance.first_opt_truck_ind()[index]), int(Distance.first_opt_truck_ind()[index + 1])))
+            Distance.first_opt_truck()[first_truck_pack_id][10] = (str(package_delivery))
+            get_hashtable.update(int(Distance.first_opt_truck()[first_truck_pack_id][10]), first_delivery)
             first_truck_pack_id += 1
         except IndexError:
             pass
@@ -92,7 +92,7 @@ class Package(object):
     i = 0
     # O(N)
     for value in second_truck_status():
-        second_truck_staus()[i][9] = second_time
+        Distance.second_truck_staus()[i][9] = second_time
         second_delivery.append(second_truck_status()[i])
         i+=1
 
@@ -101,7 +101,7 @@ class Package(object):
     try:
         second_count = 0
         for j in second_delivery:
-            for k in distance.check_address():
+            for k in Distance.check_address():
                 if k[2] == j[2]:
                     second_truck.append(j[0])
                     second_delivery[second_count][1] = j[0]
@@ -109,21 +109,21 @@ class Package(object):
     except IndexError:
         pass
 
-    calc_short_dist(second_delivery, 1, 0)
+    Distance.calc_short_dist(second_delivery, 1, 0)
     second_truck_dist = 0
 
     # Same as with the first truck
     # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
     # O(N)
     second_truck_pack_id = 0
-    for index in range(len(second_opt_truck_ind())):
+    for index in range(len(Distance.second_opt_truck_ind())):
         try:
             # Calculate the total distance of the truck
-            second_truck_dist = calc_short_dist(int(second_opt_truck_ind()[index]), int(second_opt_truck_ind()[index + 1]), second_truck_dist)
+            second_truck_dist = Distance.calc_short_dist(int(Distance.second_opt_truck_ind()[index]), int(Distance.second_opt_truck_ind()[index + 1]), second_truck_dist)
             # Calculate the distance of each pacakage along the route
-            package_delivery = calc_short_dist(current_distance(int(second_opt_truck_ind()[index]), int(second_opt_truck_ind()[index + 1])))
-            second_opt_truck()[second_truck_pack_id][10] = (str(package_delivery))
-            get_hashtable.update(int(second_opt_truck()[second_truck_pack_id][10]), second_delivery)
+            package_delivery = Distance.calc_short_dist(Distance.current_distance(int(Distance.second_opt_truck_ind()[index]), int(Distance.second_opt_truck_ind()[index + 1])))
+            Distance.second_opt_truck()[second_truck_pack_id][10] = (str(package_delivery))
+            get_hashtable.update(int(Distance.second_opt_truck()[second_truck_pack_id][10]), second_delivery)
             second_truck_pack_id += 1
         except IndexError:
             pass
@@ -132,7 +132,7 @@ class Package(object):
     i = 0
     # O(N)
     for value in third_truck_status():
-        third_truck_staus()[i][9] = third_time
+        Distance.third_truck_staus()[i][9] = third_time
         third_delivery.append(third_truck_status()[i])
         i+=1
 
@@ -141,7 +141,7 @@ class Package(object):
     try:
         third_count = 0
         for j in third_delivery:
-            for k in distance.check_address():
+            for k in Distance.check_address():
                 if k[2] == j[2]:
                     third_truck.append(j[0])
                     third_delivery[third_count][1] = j[0]
@@ -149,21 +149,21 @@ class Package(object):
     except IndexError:
         pass
 
-    calc_short_dist(third_delivery, 1, 0)
+    Distance.calc_short_dist(third_delivery, 1, 0)
     third_truck_dist = 0
 
     # Same as with the first two trucks
     # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
     # O(N)
     third_truck_pack_id = 0
-    for index in range(len(third_opt_truck_ind())):
+    for index in range(len(Distance.third_opt_truck_ind())):
         try:
             # Calculate the total distance of the truck
-            third_truck_dist = calc_short_dist(int(third_opt_truck_ind()[index]), int(third_opt_truck_ind()[index + 1]), third_truck_dist)
+            third_truck_dist = Distance.calc_short_dist(int(Distance.third_opt_truck_ind()[index]), int(Distance.third_opt_truck_ind()[index + 1]), third_truck_dist)
             # Calculate the distance of each pacakage along the route
-            package_delivery = calc_short_dist(current_distance(int(third_opt_truck_ind()[index]), int(third_opt_truck_ind()[index + 1])))
-            third_opt_truck()[third_truck_pack_id][10] = (str(package_delivery))
-            get_hashtable.update(int(third_opt_truck()[third_truck_pack_id][10]), third_delivery)
+            package_delivery = Distance.calc_short_dist(Distance.current_distance(int(Distance.third_opt_truck_ind()[index]), int(Distance.third_opt_truck_ind()[index + 1])))
+            Distance.third_opt_truck()[third_truck_pack_id][10] = (str(package_delivery))
+            get_hashtable.update(int(Distance.third_opt_truck()[third_truck_pack_id][10]), third_delivery)
             third_truck_pack_id += 1
         except IndexError:
             pass
@@ -173,3 +173,6 @@ class Package(object):
     def total_distance():
         total_distance = first_truck_dist + second_truck_dist + third_truck_dist
         return total_distance
+
+    def get_first_dist():
+        return first_truck_dist
