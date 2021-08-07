@@ -3,7 +3,7 @@
 from ReadCSVData import *
 from Distances import *
 import datetime
-from Packages import *
+from Packages import total_distance
 
 class Main:
     # This displays when the programs is started
