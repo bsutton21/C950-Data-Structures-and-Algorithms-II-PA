@@ -10,7 +10,7 @@ class Main:
     print('Welcome to the WGUPS package tracking system!')
     print('Current route was completed in', "{0:.2f}".format(total_distance(), 2), 'miles.')
     start = input("To begin, please type 'lookup' to search for an individual package or "
-                  "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program.")
+                  "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program. ")
 
     while start is not 'exit':
         # if user types 'timestamp' then the the program asks for a time to display.  The program then all remaining packages as of that time.

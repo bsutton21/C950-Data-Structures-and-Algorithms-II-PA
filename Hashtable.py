@@ -10,7 +10,7 @@ class HashTable:
     
     # Basic function to hash the data into the buckets
     def hash_bucket(self, key):
-        bucket = int(key) % len(self.map)
+        bucket = int(key) % len(self.root)
         return bucket
 
     def add(self, key, item):
