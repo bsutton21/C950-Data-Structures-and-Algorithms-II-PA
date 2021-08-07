@@ -74,7 +74,7 @@ class Main:
         # If 'lookup' is enter then the user is prompted for a package ID followed by a timestamp
         elif start == 'lookup':
             try:
-                count = input('Which package would you like to lookup?: ')
+                count = input('Please type the package ID that you would like to lookup?: ')
                 first_time = get_hashtable().get(str(count))[9]
                 second_time = get_hashtable().get(str(count))[10]
                 package_status_time = input('Please enter a time in the HH:MM:SS format: ')
