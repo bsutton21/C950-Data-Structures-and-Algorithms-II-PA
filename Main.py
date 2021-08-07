@@ -1,7 +1,6 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-from ReadCSVData import *
-from Distances import *
+from ReadCSVData import get_hashtable
 import datetime
 from Packages import total_distance
 
@@ -11,7 +10,7 @@ class Main:
     print('Current route was completed in', "{0:.2f}".format(total_distance(), 2), 'miles.')
     start = input("To begin, please type 'lookup' to search for an individual package or "
                   "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program. ")
-
+    # the programs continues to listen for input until the user enters 'exit'
     while start is not 'exit':
         # if user types 'timestamp' then the the program asks for a time to display.  The program then all remaining packages as of that time.
         # runtime is O(N)
