@@ -159,25 +159,25 @@ def calc_short_dist(truck_dist_list, truck_num, curr_loc):
             pass
 
 # O(1)
-def first_opt_truck():
+def first_optimized_truck():
     return first_opt_truck
 
 # O(1)
-def first_opt_truck_ind():
+def first_opt_ind():
     return first_opt_truck_ind
 
 # O(1)
-def second_opt_truck():
+def second_optimized_truck():
     return second_opt_truck
 
 # O(1)
-def second_opt_truck_ind():
+def second_opt_ind():
     return second_opt_truck_ind
 
 # O(1)
-def third_opt_truck():
+def third_optimized_truck():
     return third_opt_truck
 
 # O(1)
-def third_opt_truck_ind():
+def third_opt_ind():
     return third_opt_truck_ind
