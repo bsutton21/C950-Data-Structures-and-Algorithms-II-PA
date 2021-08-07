@@ -76,14 +76,14 @@ first_truck_dist = 0
 # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
 # O(N)
 first_truck_pack_id = 0
-for index in range(len(first_opt_truck_ind())):
+for index in range(len(first_opt_ind())):
     try:
         # Calculate the total distance of the truck
-        first_truck_dist = calc_short_dist(int(first_opt_truck_ind()[index]), int(first_opt_truck_ind()[index + 1]), first_truck_dist)
+        first_truck_dist = calc_short_dist(int(first_opt_ind()[index]), int(first_opt_ind()[index + 1]), first_truck_dist)
         # Calculate the distance of each pacakage along the route
-        package_delivery = calc_short_dist(current_distance(int(first_opt_truck_ind()[index]), int(first_opt_truck_ind()[index + 1])))
-        first_opt_truck()[first_truck_pack_id][10] = (str(package_delivery))
-        get_hashtable.update(int(first_opt_truck()[first_truck_pack_id][10]), first_delivery)
+        package_delivery = calc_short_dist(current_distance(int(first_opt_ind()[index]), int(first_opt_ind()[index + 1])))
+        first_optimized_truck()[first_truck_pack_id][10] = (str(package_delivery))
+        get_hashtable.update(int(first_optimized_truck()[first_truck_pack_id][10]), first_delivery)
         first_truck_pack_id += 1
     except IndexError:
         pass
@@ -116,14 +116,14 @@ second_truck_dist = 0
 # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
 # O(N)
 second_truck_pack_id = 0
-for index in range(len(second_opt_truck_ind())):
+for index in range(len(second_opt_ind())):
     try:
         # Calculate the total distance of the truck
-        second_truck_dist = calc_short_dist(int(second_opt_truck_ind()[index]), int(second_opt_truck_ind()[index + 1]), second_truck_dist)
+        second_truck_dist = calc_short_dist(int(second_opt_ind()[index]), int(second_opt_ind()[index + 1]), second_truck_dist)
         # Calculate the distance of each pacakage along the route
-        package_delivery = calc_short_dist(current_distance(int(second_opt_truck_ind()[index]), int(second_opt_truck_ind()[index + 1])))
-        second_opt_truck()[second_truck_pack_id][10] = (str(package_delivery))
-        get_hashtable.update(int(second_opt_truck()[second_truck_pack_id][10]), second_delivery)
+        package_delivery = calc_short_dist(current_distance(int(second_opt_ind()[index]), int(second_opt_ind()[index + 1])))
+        second_optimized_truck()[second_truck_pack_id][10] = (str(package_delivery))
+        get_hashtable.update(int(second_optimized_truck()[second_truck_pack_id][10]), second_delivery)
         second_truck_pack_id += 1
     except IndexError:
         pass
@@ -156,14 +156,14 @@ third_truck_dist = 0
 # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
 # O(N)
 third_truck_pack_id = 0
-for index in range(len(third_opt_truck_ind())):
+for index in range(len(third_opt_ind())):
     try:
         # Calculate the total distance of the truck
-        third_truck_dist = calc_short_dist(int(third_opt_truck_ind()[index]), int(third_opt_truck_ind()[index + 1]), third_truck_dist)
+        third_truck_dist = calc_short_dist(int(third_opt_ind()[index]), int(third_opt_ind()[index + 1]), third_truck_dist)
         # Calculate the distance of each pacakage along the route
-        package_delivery = calc_short_dist(current_distance(int(third_opt_truck_ind()[index]), int(third_opt_truck_ind()[index + 1])))
-        third_opt_truck()[third_truck_pack_id][10] = (str(package_delivery))
-        get_hashtable.update(int(third_opt_truck()[third_truck_pack_id][10]), third_delivery)
+        package_delivery = calc_short_dist(current_distance(int(third_opt_ind()[index]), int(third_opt_ind()[index + 1])))
+        third_optimized_truck()[third_truck_pack_id][10] = (str(package_delivery))
+        get_hashtable.update(int(third_optimized_truck()[third_truck_pack_id][10]), third_delivery)
         third_truck_pack_id += 1
     except IndexError:
         pass
