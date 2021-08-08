@@ -20,7 +20,7 @@ class HashTable:
         self.root[bucket].append(item)
 
     def get(self,key):
-        # Gets the buck ID/key from the hash
+        # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
         # Gets the items currently in the bucket
         bucket_items = self.root[bucket]
@@ -33,7 +33,7 @@ class HashTable:
             return None
     
     def remove_item(self, key):
-        # Gets the buck ID/key from the hash
+        # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
         # Gets the items currently in the bucket
         bucket_items = self.root[bucket]
