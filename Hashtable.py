@@ -16,21 +16,30 @@ class HashTable:
     def add(self, key, item):
         # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
+        key_item = [key, item]
         # Appends the current value to the bucket
-        self.root[bucket].append(item)
+
+        if self.root[bucket] is None:
+            self.root[bucket] = list([bucket])
+            return True
+        else:
+            for pair in self.root[bucket]:
+                if pair[0] == key:
+                    pair[1] = bucket
+                    return True
+            self.root[bucket].append(key_item)
+            return True
+        # self.root[bucket].append(item)
+
+
 
     def get(self,key):
-        # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
-        # Gets the items currently in the bucket
-        bucket_items = self.root[bucket]
-        for item in bucket_items:
-            if item.package_id == key:
-                # Finds the index and returns the item at the index
-                index = bucket_items.index(item)
-                return bucket_items[index]
-        else:
-            return None
+        if self.root[bucket] is not None:
+            for pair in self.root[bucket]:
+                if pair[0] == key:
+                    return pair[1]
+        return None
     
     def remove_item(self, key):
         # Gets the bucket ID/key from the hash

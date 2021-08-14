@@ -49,7 +49,7 @@ def check_distance(rowval, columnval, sum):
 # Complexity is O(1)
 def current_distance(rowval, columnval):
     distance = addresses_csv[rowval][columnval]
-    if distance is'':
+    if distance is '':
         distance = addresses_csv[rowval][columnval]
 
     return float(distance)

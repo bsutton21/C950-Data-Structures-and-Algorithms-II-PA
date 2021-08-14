@@ -18,11 +18,12 @@ third_time = '11:00:00'
 
 # Convert string datetime into datetime.timedelta
 (h, m, s) = first_time.split(':')
-convert_first_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+split_first_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
 (h, m, s) = second_time.split(':')
-convert_second_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+split_second_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
 (h, m, s) = third_time.split(':')
-convert_third_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+split_third_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+
 
 # Updates the delivery status of all packages in the first truck when it leaves the station
 i = 0
@@ -50,6 +51,7 @@ first_truck_dist = 0
 
 # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
 # O(N)
+first_truck_dist = 0
 first_truck_pack_id = 0
 for index in range(len(first_opt_ind())):
     try:
@@ -62,7 +64,7 @@ for index in range(len(first_opt_ind())):
         first_truck_pack_id += 1
     except IndexError:
         pass
-
+    
 # Updates the delivery status of all packages in the second truck when it leaves the station
 i = 0
 # O(N)
@@ -143,8 +145,14 @@ for index in range(len(third_opt_ind())):
     except IndexError:
         pass
 
+
 # Calculates the total distance traveled by all three trucks
 # O(1)
 def total_distance():
-    total_distance = first_truck_dist + second_truck_dist + third_truck_dist
+    # Do I need to define the above trucks in functions and call them here?
+    """temp_first_dist = find_first_distance()
+    temp_sec_dist = find_second_distance()
+    temp_third_dist = find_third_distance()
+    total_distance = temp_first_dist + temp_sec_dist + temp_third_dist"""
+    total_distance = second_truck_dist + third_truck_dist
     return total_distance
