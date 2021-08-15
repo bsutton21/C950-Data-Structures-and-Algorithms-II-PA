@@ -7,7 +7,8 @@ from Packages import total_distance
 class Main:
     # This displays when the programs is started
     print('Welcome to the WGUPS package tracking system!')
-    print('Current route was completed in', "{0:.2f}".format(total_distance(), 2), 'miles.')
+    print('All packages delivered in', "{0:.2f}".format(total_distance(), 2), 'miles.')
+    # print('Current route was completed in', total_distance(), 'miles.')
     start = input("To begin, please type 'lookup' to search for an individual package or "
                   "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program. ")
     # the programs continues to listen for input until the user enters 'exit'

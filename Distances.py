@@ -55,7 +55,7 @@ def current_distance(rowval, columnval):
     return float(distance)
 
 first_truck = ['8:00:00']
-second_truck = ['9:10:00']
+second_truck = ['9:05:00']
 third_truck = ['11:00:00']
 
 # This function takes a distance then divides it by 18. It then uses divmod to display a time and appends 00
@@ -66,7 +66,7 @@ def check_first_truck_time(distance):
     new_time = distance/18
     dist_in_min = '{0:02.0f}:{1:02.0f}'.format(*divmod(new_time * 60, 60))
     final_time = dist_in_min + ':00'
-    first_truck_status.append(final_time)
+    first_truck.append(final_time)
     sum = datetime.timedelta()
     for i in first_truck:
         (h, m, s) = i.split(':')

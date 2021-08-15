@@ -3,16 +3,19 @@
 #Implements the hash table to fulfill requirement E
 class HashTable:
     # Initializes the hash table with 10 buckets
+    # O(N)
     def __init__(self, capacity=10):
         self.root = []
         for i in range(capacity):
             self.root.append([])
     
     # Basic function to hash the data into the buckets
+    # O(1)
     def hash_bucket(self, key):
         bucket = int(key) % len(self.root)
         return bucket
 
+    # O(N)
     def add(self, key, item):
         # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
@@ -31,8 +34,19 @@ class HashTable:
             return True
         # self.root[bucket].append(item)
 
+    # O(N)
+    def update(self, key, value):
+        bucket = self.hash_bucket(key)
+        if self.root[bucket] is not None:
+            for pair in self.root[bucket]:
+                if pair[0] == key:
+                    pair[1] = value
+                    print(pair[1])
+                    return True
+        else:
+            print('There was an error with updating on key: ' + key)
 
-
+    # O(N)
     def get(self,key):
         bucket = self.hash_bucket(key)
         if self.root[bucket] is not None:
@@ -41,6 +55,7 @@ class HashTable:
                     return pair[1]
         return None
     
+    # O(N)
     def remove_item(self, key):
         # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)

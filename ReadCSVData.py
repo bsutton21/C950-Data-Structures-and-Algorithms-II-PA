@@ -10,11 +10,13 @@ second_truck = [] # list to represent the second truck delivery
 third_truck = [] # list to represent the third truck delivery
 
 # Reads in the names of all of the possible delivery locations
+# O(1)
 # def read_packages():
 with open('Packages.csv') as csvfile:
     packages_csv = csv.reader(csvfile, delimiter=',')
     packages_csv = list(packages_csv)
 
+# O(N)
 # def read_full_address_data():
 with open('Full Package Data.csv') as csvfile:
     full_package_csv = csv.reader(csvfile, delimiter=',')
