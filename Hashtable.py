@@ -56,7 +56,7 @@ class HashTable:
         return None
     
     # O(N)
-    def remove_item(self, key):
+    def remove(self, key):
         # Gets the bucket ID/key from the hash
         bucket = self.hash_bucket(key)
         # Gets the items currently in the bucket
