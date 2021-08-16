@@ -35,7 +35,7 @@ def run_first_truck():
         first_truck_status()[i][9] = first_time
         first_delivery.append(first_truck_status()[i])
         i+=1
-    print ('Length of first_truck_status: ' + str(len(first_truck_status())))
+    print ('Length of first_truck_status: ' + str(len(first_delivery)))
 
     # Compares the addresses on the first truck to the main address list and adds the address index to the list
     # O(N^2)

@@ -5,15 +5,15 @@ import datetime
 from Packages import total_distance
 
 class Main:
-    # This displays when the programs is started
+    # This is the main UI that displays to users to navigate and search
     print('Welcome to the WGUPS package tracking system!')
     print('All packages delivered in', "{0:.2f}".format(total_distance(), 2), 'miles.')
-    # print('Current route was completed in', total_distance(), 'miles.')
     start = input("To begin, please type 'lookup' to search for an individual package or "
                   "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program. ")
     # the programs continues to listen for input until the user enters 'exit'
     while start is not 'exit':
-        # if user types 'timestamp' then the the program asks for a time to display.  The program then all remaining packages as of that time.
+        # if user types 'timestamp' then the the program asks for a time to display.  
+        # The program then displays all remaining packages as of that time.
         # runtime is O(N)
         if start == 'timestamp':
             try:
@@ -71,7 +71,8 @@ class Main:
             except ValueError:
                 print('Invalid Entry!')
                 exit()
-        # If 'lookup' is enter then the user is prompted for a package ID followed by a timestamp
+        # If 'lookup' is entered then the user is prompted for a package ID followed by a timestamp.
+        # The program then displays all relevant information for that package at that time.
         elif start == 'lookup':
             try:
                 count = input('Please type the package ID that you would like to lookup?: ')
@@ -86,7 +87,6 @@ class Main:
                 convert_second_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
                 # First checks if the package has left the hub yet
                 if convert_first_time >= convert_user_time:
-
                     get_hashtable().get(str(count))[10] = 'At Hub'
                     get_hashtable().get(str(count))[9] = 'Leaves at ' + first_time
                     print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
@@ -120,7 +120,7 @@ class Main:
                               get_hashtable().get(str(count))[9], '  Delivery status:',
                               get_hashtable().get(str(count))[10])
             except ValueError:
-                print('Invalid entry')
+                print('Invalid entry!')
                 exit()
         elif start == 'exit':
             exit()
