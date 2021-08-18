@@ -27,6 +27,7 @@ split_second_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int
 (h, m, s) = third_time.split(':')
 split_third_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
 
+# O(N^2 + 2N) = O(N^2)
 def run_first_truck():
     # Updates the delivery status of all packages in the first truck when it leaves the station
     i = 0
@@ -35,7 +36,6 @@ def run_first_truck():
         first_truck_status()[i][9] = first_time
         first_delivery.append(first_truck_status()[i])
         i+=1
-    print ('Length of first_truck_status: ' + str(len(first_delivery)))
 
     # Compares the addresses on the first truck to the main address list and adds the address index to the list
     # O(N^2)
@@ -53,26 +53,25 @@ def run_first_truck():
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(first_delivery, 1, 0)
     first_truck_dist = 0
-    print ('Length of first_delivery: ' + str(len(first_delivery)))
 
-    # This for loop runs the first truck through the functions in Dystances.py
+    # Runs the first truck through the functions in Dystances.py
     # O(N)
     first_truck_pack_id = 0
-    print ('Length of first_opt_ind: ' + str(len(first_opt_ind())))
     for index in range(len(first_opt_ind())):
         try:
             # Calculate the total distance of the truck
             first_truck_dist = check_distance(int(first_opt_ind()[index]), int(first_opt_ind()[index + 1]), first_truck_dist)
             # Calculate the distance of each pacakage along the route
             package_delivery = check_first_truck_time(current_distance(int(first_opt_ind()[index]), int(first_opt_ind()[index + 1])))
-            first_optimized_truck()[first_truck_pack_id][10] = (str(package_delivery))
+            first_optimized_truck()[first_truck_pack_id][10] = str(package_delivery)
             get_hashtable().update(int(first_optimized_truck()[first_truck_pack_id][0]), first_delivery)
             first_truck_pack_id += 1
+            print ('First string ' + third_optimized_truck()[first_truck_pack_id][10]) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
         except IndexError:
             pass
-    print ('First truck distance: ' + str(first_truck_dist))
     return first_truck_dist
 
+# O(N^2 + 2N) = O(N^2)
 def run_second_truck():
     # Updates the delivery status of all packages in the second truck when it leaves the station
     i = 0
@@ -100,7 +99,7 @@ def run_second_truck():
     second_truck_dist = 0
 
     # Same as with the first truck
-    # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
+    # Runs the second truck through the functions in Dystances.py
     # O(N)
     second_truck_pack_id = 0
     for index in range(len(second_opt_ind())):
@@ -109,14 +108,15 @@ def run_second_truck():
             second_truck_dist = check_distance(int(second_opt_ind()[index]), int(second_opt_ind()[index + 1]), second_truck_dist)
             # Calculate the distance of each pacakage along the route
             package_delivery = check_second_truck_time(current_distance(int(second_opt_ind()[index]), int(second_opt_ind()[index + 1])))
-            second_optimized_truck()[second_truck_pack_id][10] = (str(package_delivery))
+            second_optimized_truck()[second_truck_pack_id][10] = str(package_delivery)
             get_hashtable().update(int(second_optimized_truck()[second_truck_pack_id][0]), second_delivery)
             second_truck_pack_id += 1
+            print ('Second string ' + third_optimized_truck()[second_truck_pack_id][10])
         except IndexError:
             pass
-    print ('Second truck distance: ' + str(second_truck_dist))
     return second_truck_dist
 
+# O(N^2 + 2N) = O(N^2)
 def run_third_truck():
     # Updates the delivery status of all packages in the third truck when it leaves the station
     i = 0
@@ -124,6 +124,7 @@ def run_third_truck():
     for value in third_truck_status():
         third_truck_status()[i][9] = third_time
         third_delivery.append(third_truck_status()[i])
+        print ('third_delivery length: ' + str(len(third_delivery))) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
         i+=1
 
     # Compares the addresses on the third truck to the main address list and adds the address index to the list
@@ -144,21 +145,22 @@ def run_third_truck():
     third_truck_dist = 0
 
     # Same as with the first two trucks
-    # This for loops uses the greedy sorting algorithm in Distance.py to determine the best route and calculates the distance
+    # Runs the third truck through the functions in Dystances.py
     # O(N)
     third_truck_pack_id = 0
+    print ('Length third opt index: ' + str(len(third_opt_ind()))) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
     for index in range(len(third_opt_ind())):
         try:
             # Calculate the total distance of the truck
             third_truck_dist = check_distance(int(third_opt_ind()[index]), int(third_opt_ind()[index + 1]), third_truck_dist)
             # Calculate the distance of each pacakage along the route
             package_delivery = check_third_truck_time(current_distance(int(third_opt_ind()[index]), int(third_opt_ind()[index + 1])))
-            third_optimized_truck()[third_truck_pack_id][10] = (str(package_delivery))
+            third_optimized_truck()[third_truck_pack_id][10] = str(package_delivery)
             get_hashtable().update(int(third_optimized_truck()[third_truck_pack_id][0]), third_delivery)
             third_truck_pack_id += 1
+            print ('Third string ' + str(third_optimized_truck()[third_truck_pack_id][0]) + ' ' + str(third_optimized_truck()[third_truck_pack_id][10]))
         except IndexError:
             pass
-    print ('Third truck distance: ' + str(third_truck_dist))
     return third_truck_dist
 
 # Calculates the total distance traveled by all three trucks

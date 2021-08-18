@@ -11,6 +11,7 @@ class Main:
     start = input("To begin, please type 'lookup' to search for an individual package or "
                   "type 'timestamp' to view delivery status at a given time.  Type 'exit' to exit the program. ")
     # the programs continues to listen for input until the user enters 'exit'
+    # total complexity: O(N)
     while start is not 'exit':
         # if user types 'timestamp' then the the program asks for a time to display.  
         # The program then displays all remaining packages as of that time.
@@ -20,7 +21,7 @@ class Main:
                 user_time = input('Please enter a time in the HH:MM:SS format: ')
                 (h, m, s) = user_time.split(':')
                 convert_user_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
-                # O(N^2)
+                # O(N)
                 for count in range(1, 41):
                     try:
                         departure_time = get_hashtable().get(str(count))[9]
@@ -33,7 +34,7 @@ class Main:
                         pass
                     # First checks all packages against the entered time to determine if there is enough time for delivery
                     if convert_departure_time >= convert_user_time:
-                        delivery_status = 'At Hub'
+                        temp_delivery_status = 'At Hub'
                         truck_status = departure_time
                         print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
                               get_hashtable().get(str(count))[2], get_hashtable().get(str(count))[3],
@@ -41,11 +42,11 @@ class Main:
                               '  Required delivery time:', get_hashtable().get(str(count))[6],
                               '  Package weight:', get_hashtable().get(str(count))[7], '  Truck status: Leaves at ',
                               str(truck_status), '  Delivery status:',
-                              delivery_status)
+                              temp_delivery_status)
                     elif convert_departure_time <= convert_user_time:
                         # Then checks to see which packages have left the hub but have not been delivered yet
                         if convert_user_time < convert_delivery_time:
-                            delivery_status = 'In transit'
+                            temp_delivery_status = 'In transit'
                             truck_status = departure_time
                             print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
                                   get_hashtable().get(str(count))[2], get_hashtable().get(str(count))[3],
@@ -53,10 +54,10 @@ class Main:
                                   '  Required delivery time:', get_hashtable().get(str(count))[6],
                                   '  Package weight:', get_hashtable().get(str(count))[7], '  Truck status: Left at ',
                                   get_hashtable().get(str(count))[9], '  Delivery status:',
-                                  delivery_status)
+                                  temp_delivery_status)
                         # Finally checks all packages that have already been delivered and displays the delivered time
                         else:
-                            delivery_status = 'Delivered'
+                            temp_delivery_status = 'Delivered'
                             truck_status = departure_time
                             print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
                                   get_hashtable().get(str(count))[2], get_hashtable().get(str(count))[3],
@@ -64,7 +65,7 @@ class Main:
                                   '  Required delivery time:', get_hashtable().get(str(count))[6],
                                   '  Package weight:', get_hashtable().get(str(count))[7],'  Truck status: Left at ',
                                   get_hashtable().get(str(count))[9],'  Delivery status: ',
-                                  delivery_status)
+                                  temp_delivery_status, ' at ', get_hashtable().get(str(count))[10])
 
             except IndexError:
                 print(IndexError)
@@ -88,7 +89,7 @@ class Main:
                 convert_delivery_time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
                 # First checks if the package has left the hub yet
                 if convert_departure_time >= convert_user_time:
-                    delivery_status = 'At Hub'
+                    temp_delivery_status = 'At Hub'
                     truck_status = departure_time
                     print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
                         get_hashtable().get(str(count))[2], get_hashtable().get(str(count))[3],
@@ -96,11 +97,11 @@ class Main:
                         '  Required delivery time:', get_hashtable().get(str(count))[6],
                         '  Package weight:', get_hashtable().get(str(count))[7], '  Truck status: Leaves at ',
                         get_hashtable().get(str(count))[9], '  Delivery status:',
-                        delivery_status)
+                        temp_delivery_status)
                 elif convert_departure_time <= convert_user_time:
                     # Then checks if the package has left the hub but has not been delivered yet
                     if convert_user_time < convert_delivery_time:
-                        delivery_status = 'In transit'
+                        temp_delivery_status = 'In transit'
                         truck_status = departure_time
                         print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
                             get_hashtable().get(str(count))[2], get_hashtable().get(str(count))[3],
@@ -108,10 +109,10 @@ class Main:
                             '  Required delivery time:', get_hashtable().get(str(count))[6],
                             '  Package weight:', get_hashtable().get(str(count))[7], '  Truck status: Left at ',
                             get_hashtable().get(str(count))[9], '  Delivery status:',
-                            delivery_status)
+                            temp_delivery_status)
                     # If the package has already been delivered than it displays the time
                     else:
-                        delivery_status = 'Delivered'
+                        temp_delivery_status = 'Delivered'
                         truck_status = departure_time
                         print('Package ID:', get_hashtable().get(str(count))[0], '   Street address:',
                             get_hashtable().get(str(count))[2], get_hashtable().get(str(count))[3],
@@ -119,7 +120,7 @@ class Main:
                             '  Required delivery time:', get_hashtable().get(str(count))[6],
                             '  Package weight:', get_hashtable().get(str(count))[7], '  Truck status: Left at ',
                             get_hashtable().get(str(count))[9], '  Delivery status:',
-                            delivery_status)
+                            temp_delivery_status, ' at ', get_hashtable().get(str(count))[10])
             except IndexError:
                 print(IndexError)
                 exit()

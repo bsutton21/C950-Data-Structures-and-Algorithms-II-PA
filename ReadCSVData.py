@@ -11,13 +11,11 @@ third_truck = [] # list to represent the third truck delivery
 
 # Reads in the names of all of the possible delivery locations
 # O(1)
-# def read_packages():
 with open('Packages.csv') as csvfile:
     packages_csv = csv.reader(csvfile, delimiter=',')
     packages_csv = list(packages_csv)
 
 # O(N)
-# def read_full_address_data():
 with open('Full Package Data.csv') as csvfile:
     full_package_csv = csv.reader(csvfile, delimiter=',')
 
@@ -41,7 +39,7 @@ with open('Full Package Data.csv') as csvfile:
         value = iterate_value
 
         # I manually sorted the packages on the trucks since for a shipping company of this size,
-        # it's reasonable to think that management cound still do this manually
+        # it's reasonable to think that management could still do this manually
 
         # Rules followed while sorting:
         # Truck 1: Earliest times, co-delivery requirements, ZIP code proximity
@@ -59,18 +57,25 @@ with open('Full Package Data.csv') as csvfile:
 
         elif int(package_ID_value) in truck3_id_list:
             third_truck.append(value)
-        
+            print ('Third truck length: ' + str(len(third_truck))) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
         create_hash_table.add(key, value)
 
 # Create object of hash table
+# O(1)
 def get_hashtable():
     return create_hash_table
 
+# Create object of the first truck
+# O(1)
 def first_truck_status():
     return first_truck
-    
+
+# Create object of the second truck
+# O(1)
 def second_truck_status():
     return second_truck
 
+# Create object of the third truck
+# O(1)
 def third_truck_status():
     return third_truck

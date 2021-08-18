@@ -14,14 +14,13 @@ third_opt_truck = []
 third_opt_truck_ind =[]
 
 # Reads in the addresses for each location/stop
-# def read_addresses():
+# O(1)
 with open('Addresses.csv') as csvfile:
     addresses_csv = csv.reader(csvfile, delimiter=',')
     addresses_csv = list(addresses_csv)
 
 # Reads in the distances between each of the locations
-# def read_distances():
-    # Reads in the distances between each of the locations
+# O(1)
 with open('Distances.csv') as csvfile:
     distances_csv = csv.reader(csvfile, delimiter=',')
     distances_csv = list(distances_csv)
@@ -41,9 +40,7 @@ def current_distance(rowval, columnval):
     distance = distances_csv[rowval][columnval]
     if distance is '':
         distance = distances_csv[columnval][rowval]
-
         return float(distance)
-
     return float(int(distance))
 
 first_truck = ['8:00:00']
@@ -147,6 +144,7 @@ def calc_short_dist(truck_dist_list, truck_num, curr_loc):
                             pop_value = truck_dist_list.index(index)
                             truck_dist_list.pop(pop_value)
                             current_loc = new_loc
+                            print ('count') # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
                             calc_short_dist(truck_dist_list, 3, current_loc)
         except IndexError:
             pass
