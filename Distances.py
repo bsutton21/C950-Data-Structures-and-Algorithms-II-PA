@@ -111,6 +111,8 @@ The complexity is O(N^2) due to 2 for loops.
 """
 
 def calc_short_dist(truck_dist_list, truck_num, curr_loc):
+    if truck_num == 3:
+        print ("truck_dist_list length truck 3: " + str(len(truck_dist_list)))
     if len(truck_dist_list) == 0: # Base case returns the list if the list is empty
         print ('Truck', + str(truck_num) + 'is empty!')
         return truck_dist_list
