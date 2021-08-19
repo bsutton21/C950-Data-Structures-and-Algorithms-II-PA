@@ -45,9 +45,16 @@ with open('Full Package Data.csv') as csvfile:
         # Truck 1: Earliest times, co-delivery requirements, ZIP code proximity
         # Truck 2: Packages delayed until 9:05 with deadline by 10:30, some packages required to be on truck 2, ZIP code proximity
         # Truck 3: Remaining packages
-        truck1_id_list = [1, 4, 13, 14, 15, 16, 19, 20, 21, 24, 34, 39, 40]
-        truck2_id_list = [3, 5, 6, 7, 18, 22, 25, 26, 28, 29, 31, 32, 36, 37, 38]
-        truck3_id_list = [2, 8, 9, 10, 11, 12, 17, 23, 27, 30, 33, 35]
+        #truck1_id_list = [1, 4, 13, 14, 15, 16, 19, 20, 21, 24, 34, 39, 40]
+        #truck2_id_list = [3, 5, 6, 7, 18, 22, 25, 26, 28, 29, 31, 32, 36, 37, 38]
+        #truck3_id_list = [2, 8, 9, 10, 11, 12, 17, 23, 27, 30, 33, 35]
+        ##truck1_id_list = [1, 4, 8, 13, 14, 15, 16, 19, 20, 21, 24, 30, 34, 39, 40] # 15 packages
+        ##truck2_id_list = [2, 3, 5, 6, 18, 22, 25, 26, 28, 31, 32, 33, 36, 37, 38] # 15 packages
+        ##truck3_id_list = [7, 9, 10, 11, 12, 17, 23, 27, 29, 35] # 10 packages
+        truck1_id_list = [1, 4, 13, 14, 15, 16, 19, 20, 21, 24, 34, 39, 40] # 13 packages
+        truck2_id_list = [3, 5, 6, 8, 18, 22, 25, 26, 28, 30, 31, 32, 36, 37, 38] # 15 packages
+        truck3_id_list = [2, 7, 9, 10, 11, 12, 17, 23, 27, 29, 33, 35] # 12 packages
+
 
         if int(package_ID_value) in truck1_id_list:
             first_truck.append(value)
@@ -57,7 +64,7 @@ with open('Full Package Data.csv') as csvfile:
 
         elif int(package_ID_value) in truck3_id_list:
             third_truck.append(value)
-            print ('Third truck length: ' + str(len(third_truck))) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
+
         create_hash_table.add(key, value)
 
 # Create object of hash table

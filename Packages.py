@@ -45,7 +45,7 @@ def run_first_truck():
             for k in check_address():
                 if k[2] == j[2]:
                     first_truck.append(j[0])
-                    first_delivery[first_count][1] = j[0]
+                    first_delivery[first_count][1] = k[0]
             first_count += 1
     except IndexError:
         pass
@@ -66,7 +66,6 @@ def run_first_truck():
             first_optimized_truck()[first_truck_pack_id][10] = str(package_delivery)
             get_hashtable().update(int(first_optimized_truck()[first_truck_pack_id][0]), first_delivery)
             first_truck_pack_id += 1
-            print ('First string ' + third_optimized_truck()[first_truck_pack_id][10]) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
         except IndexError:
             pass
     return first_truck_dist
@@ -89,7 +88,7 @@ def run_second_truck():
             for k in check_address():
                 if k[2] == j[2]:
                     second_truck.append(j[0])
-                    second_delivery[second_count][1] = j[0]
+                    second_delivery[second_count][1] = k[0]
             second_count += 1
     except IndexError:
         pass
@@ -111,7 +110,6 @@ def run_second_truck():
             second_optimized_truck()[second_truck_pack_id][10] = str(package_delivery)
             get_hashtable().update(int(second_optimized_truck()[second_truck_pack_id][0]), second_delivery)
             second_truck_pack_id += 1
-            print ('Second string ' + third_optimized_truck()[second_truck_pack_id][10])
         except IndexError:
             pass
     return second_truck_dist
@@ -124,7 +122,6 @@ def run_third_truck():
     for value in third_truck_status():
         third_truck_status()[i][9] = third_time
         third_delivery.append(third_truck_status()[i])
-        print ('third_delivery length: ' + str(len(third_delivery))) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
         i+=1
 
     # Compares the addresses on the third truck to the main address list and adds the address index to the list
@@ -135,7 +132,7 @@ def run_third_truck():
             for k in check_address():
                 if k[2] == j[2]:
                     third_truck.append(j[0])
-                    third_delivery[third_count][1] = j[0]
+                    third_delivery[third_count][1] = k[0]
             third_count += 1
     except IndexError:
         pass
@@ -148,7 +145,8 @@ def run_third_truck():
     # Runs the third truck through the functions in Dystances.py
     # O(N)
     third_truck_pack_id = 0
-    print ('Length third opt index: ' + str(len(third_opt_ind()))) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
+    # This is only length 8 instead of 12 because it's failing to run calc_short_dist with 27, 30, 33, 35
+    # print ('Length third opt index: ' + str(third_opt_ind())) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
     for index in range(len(third_opt_ind())):
         try:
             # Calculate the total distance of the truck
@@ -158,7 +156,7 @@ def run_third_truck():
             third_optimized_truck()[third_truck_pack_id][10] = str(package_delivery)
             get_hashtable().update(int(third_optimized_truck()[third_truck_pack_id][0]), third_delivery)
             third_truck_pack_id += 1
-            print ('Third string ' + str(third_optimized_truck()[third_truck_pack_id][0]) + ' ' + str(third_optimized_truck()[third_truck_pack_id][10]))
+            # print ('Third truck ' + str(third_optimized_truck()[third_truck_pack_id][0]) + ' ' + str(third_optimized_truck()[third_truck_pack_id][10])) TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
         except IndexError:
             pass
     return third_truck_dist
@@ -168,7 +166,10 @@ def run_third_truck():
 def total_distance():
     # Do I need to define the above trucks in functions and call them here?
     first_truck_dist = run_first_truck()
+    print ('First truck distance: ' + str(first_truck_dist))
     second_truck_dist = run_second_truck()
+    print ('Seconds truck distance: ' + str(second_truck_dist))
     third_truck_dist = run_third_truck()
+    print ('Third truck distance: ' + str(third_truck_dist))
     total_distance = first_truck_dist + second_truck_dist + third_truck_dist
     return total_distance
