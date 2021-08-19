@@ -139,14 +139,12 @@ def run_third_truck():
 
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(third_delivery, 3, 0)
-    third_truck_dist = 0
+    third_truck_dist = 0  
 
     # Same as with the first two trucks
     # Runs the third truck through the functions in Dystances.py
     # O(N)
     third_truck_pack_id = 0
-    # This is only length 8 instead of 12 because it's failing to run calc_short_dist with 27, 30, 33, 35
-    # print ('Length third opt index: ' + str(third_opt_ind())) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
     for index in range(len(third_opt_ind())):
         try:
             # Calculate the total distance of the truck
@@ -166,10 +164,7 @@ def run_third_truck():
 def total_distance():
     # Do I need to define the above trucks in functions and call them here?
     first_truck_dist = run_first_truck()
-    print ('First truck distance: ' + str(first_truck_dist))
     second_truck_dist = run_second_truck()
-    print ('Seconds truck distance: ' + str(second_truck_dist))
     third_truck_dist = run_third_truck()
-    print ('Third truck distance: ' + str(third_truck_dist))
     total_distance = first_truck_dist + second_truck_dist + third_truck_dist
     return total_distance

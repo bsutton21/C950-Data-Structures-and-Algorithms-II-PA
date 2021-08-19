@@ -147,7 +147,7 @@ with open('Addresses.csv') as csvfile:
                                 calc_short_dist(truck_dist_list, 3, curr_loc)
             except IndexError:
                 pass # print ('Index Error' + ' Truck ' + str(truck_num) + ' ' + str(index))
-
+    
     # O(1)
     def first_optimized_truck():
         return first_opt_truck

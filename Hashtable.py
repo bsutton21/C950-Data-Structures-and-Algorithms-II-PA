@@ -1,6 +1,6 @@
 # Blake Sutton  -- Student ID: 001109490 
 
-#Implements the hash table to fulfill requirement E
+# Implements the hash table to fulfill requirement E
 class HashTable:
     # Initializes the hash table with 10 buckets
     # O(N)
