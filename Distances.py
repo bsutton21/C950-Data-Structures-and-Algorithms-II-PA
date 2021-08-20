@@ -4,8 +4,6 @@ import datetime
 from ReadCSVData import *
 import csv
 
-# class Distance(object):
-
 first_opt_truck = []
 first_opt_truck_ind = []
 second_opt_truck = []
@@ -146,7 +144,7 @@ with open('Addresses.csv') as csvfile:
                                 curr_loc = new_loc
                                 calc_short_dist(truck_dist_list, 3, curr_loc)
             except IndexError:
-                pass # print ('Index Error' + ' Truck ' + str(truck_num) + ' ' + str(index))
+                pass
     
     # O(1)
     def first_optimized_truck():

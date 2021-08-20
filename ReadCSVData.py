@@ -47,11 +47,12 @@ with open('Full Package Data.csv') as csvfile:
         # Truck 3: Remaining packages
         truck1_id_list = [1, 4, 13, 14, 15, 16, 19, 20, 21, 24, 34, 39, 40] # 13 packages
         truck2_id_list = [3, 5, 6, 8, 10, 18, 22, 25, 26, 30, 31, 32, 36, 37, 38] # 15 packages
-        truck3_id_list = [2, 7, 9, 11, 12, 17, 23, 27, 28, 29, 33, 35] # 12 packages.
+        truck3_id_list = [2, 7, 9, 11, 12, 17, 23, 27, 28, 29, 33, 35] # 12 packages
 
         if int(package_ID_value) in truck1_id_list:
             if not first_truck: # base case appends if empty set
                 first_truck.append(value)
+                create_hash_table.add(key, value) 
             else:
                 for count, first_values in enumerate(first_truck):
                     if value in first_truck:
@@ -67,6 +68,7 @@ with open('Full Package Data.csv') as csvfile:
         elif int(package_ID_value) in truck2_id_list:
             if not second_truck: # base case appends if empty set
                 second_truck.append(value)
+                create_hash_table.add(key, value) 
             else:
                 for count, second_values in enumerate(second_truck):
                     if value in second_truck:
@@ -82,6 +84,7 @@ with open('Full Package Data.csv') as csvfile:
         elif int(package_ID_value) in truck3_id_list:
             if not third_truck: # base case appends if empty set
                 third_truck.append(value)
+                create_hash_table.add(key, value) 
             else:
                 for count, third_values in enumerate(third_truck):
                     if value in third_truck:
@@ -93,18 +96,6 @@ with open('Full Package Data.csv') as csvfile:
                 if value not in third_truck:
                     third_truck.append(value)
                     create_hash_table.add(key, value)
-
-        """if int(package_ID_value) in truck1_id_list:
-            first_truck.append(value)
-            print ('first truck: ' + str(first_truck))
-
-        elif int(package_ID_value) in truck2_id_list:
-            second_truck.append(value)
-
-        elif int(package_ID_value) in truck3_id_list:
-            third_truck.append(value)"""
-
-        # create_hash_table.add(key, value)
 
 # Create object of hash table
 # O(1)
