@@ -52,10 +52,10 @@ def run_first_truck():
 
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(first_delivery, 1, 0)
-    first_truck_dist = 0
-    #print ('FIRST TRUCK:     ' + str(first_optimized_truck())) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
+    
     # Runs the first truck through the functions in Dystances.py
     # O(N)
+    first_truck_dist = 0
     first_truck_count = 0
     for iterate in range(len(first_opt_ind())):
         try:
@@ -100,13 +100,12 @@ def run_second_truck():
 
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(second_delivery, 2, 0)
-    second_truck_dist = 0
-    #print ('SECOND TRUCK:    ' + str(second_optimized_truck())) #TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
+    
     # Same as with the first truck
     # Runs the second truck through the functions in Dystances.py
     # O(N)
+    second_truck_dist = 0
     second_truck_count = 0
-    
     for iterate in range(len(second_opt_ind())):
         try:
             # Calculate the distance of each pacakage along the route
@@ -150,7 +149,7 @@ def run_third_truck():
 
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(third_delivery, 3, 0)
-    # print ('THIRD TRUCK:   ' + str(third_optimized_truck())) TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
+
     # Same as with the first two trucks
     # Runs the third truck through the functions in Dystances.py
     # O(N)

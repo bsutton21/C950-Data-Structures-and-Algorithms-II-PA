@@ -110,7 +110,6 @@ with open('Addresses.csv') as csvfile:
 
     def calc_short_dist(truck_dist_list, truck_num, curr_loc):
         if len(truck_dist_list) == 0: # Base case returns the list if the list is empty
-            # print ('Truck', + str(truck_num) + 'is empty!')
             return truck_dist_list
         else:
             try:
