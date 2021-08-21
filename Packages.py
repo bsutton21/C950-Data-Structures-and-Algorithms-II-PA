@@ -16,7 +16,7 @@ second_truck = []
 third_truck = []
 # the times below represent the times that each truck leaves the hub
 first_time = '8:00:00'
-second_time = '9:10:00'
+second_time = '9:05:00'
 third_time = '11:00:00'
 
 # Convert string datetime into datetime.timedelta
@@ -53,19 +53,24 @@ def run_first_truck():
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(first_delivery, 1, 0)
     first_truck_dist = 0
-
+    #print ('FIRST TRUCK:     ' + str(first_optimized_truck())) # TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
     # Runs the first truck through the functions in Dystances.py
     # O(N)
-    first_truck_pack_id = 0
-    for index in range(len(first_opt_ind())):
+    first_truck_count = 0
+    for iterate in range(len(first_opt_ind())):
         try:
-            # Calculate the total distance of the truck
-            first_truck_dist = check_distance(int(first_opt_ind()[index]), int(first_opt_ind()[index + 1]), first_truck_dist)
             # Calculate the distance of each pacakage along the route
-            package_delivery = check_first_truck_time(current_distance(int(first_opt_ind()[index]), int(first_opt_ind()[index + 1])))
-            first_optimized_truck()[first_truck_pack_id][10] = str(package_delivery)
-            get_hashtable().update(int(first_optimized_truck()[first_truck_pack_id][0]), first_delivery)
-            first_truck_pack_id += 1
+            if range(len(first_opt_ind())).index(iterate) == (len(first_opt_ind()) - 1):
+                # Calculate the total distance of the truck
+                first_truck_dist = check_distance(int(first_opt_ind()[iterate]), 0, first_truck_dist)
+                package_delivery = check_first_truck_time(current_distance(int(first_opt_ind()[iterate]), 0))
+            else:
+                # Calculate the total distance of the truck
+                first_truck_dist = check_distance(int(first_opt_ind()[iterate]), int(first_opt_ind()[iterate + 1]), first_truck_dist)
+                package_delivery = check_first_truck_time(current_distance(int(first_opt_ind()[iterate]), int(first_opt_ind()[iterate + 1])))
+            first_optimized_truck()[first_truck_count][10] = (str(package_delivery))
+            get_hashtable().update(int(first_optimized_truck()[first_truck_count][0]), first_delivery)
+            first_truck_count += 1
         except IndexError:
             pass
     return first_truck_dist
@@ -96,20 +101,26 @@ def run_second_truck():
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(second_delivery, 2, 0)
     second_truck_dist = 0
-
+    #print ('SECOND TRUCK:    ' + str(second_optimized_truck())) #TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
     # Same as with the first truck
     # Runs the second truck through the functions in Dystances.py
     # O(N)
-    second_truck_pack_id = 0
-    for index in range(len(second_opt_ind())):
+    second_truck_count = 0
+    
+    for iterate in range(len(second_opt_ind())):
         try:
-            # Calculate the total distance of the truck
-            second_truck_dist = check_distance(int(second_opt_ind()[index]), int(second_opt_ind()[index + 1]), second_truck_dist)
             # Calculate the distance of each pacakage along the route
-            package_delivery = check_second_truck_time(current_distance(int(second_opt_ind()[index]), int(second_opt_ind()[index + 1])))
-            second_optimized_truck()[second_truck_pack_id][10] = str(package_delivery)
-            get_hashtable().update(int(second_optimized_truck()[second_truck_pack_id][0]), second_delivery)
-            second_truck_pack_id += 1
+            if range(len(second_opt_ind())).index(iterate) == (len(second_opt_ind()) - 1):
+                # Calculate the total distance of the truck
+                second_truck_dist = check_distance(int(second_opt_ind()[iterate]), 0, second_truck_dist)
+                package_delivery = check_second_truck_time(current_distance(int(second_opt_ind()[iterate]), 0))
+            else:
+                # Calculate the total distance of the truck
+                second_truck_dist = check_distance(int(second_opt_ind()[iterate]), int(second_opt_ind()[iterate + 1]), second_truck_dist)
+                package_delivery = check_second_truck_time(current_distance(int(second_opt_ind()[iterate]), int(second_opt_ind()[iterate + 1])))
+            second_optimized_truck()[second_truck_count][10] = (str(package_delivery))
+            get_hashtable().update(int(second_optimized_truck()[second_truck_count][0]), second_delivery)
+            second_truck_count += 1
         except IndexError:
             pass
     return second_truck_dist
@@ -139,22 +150,26 @@ def run_third_truck():
 
     # Calls the greedy algorithm to sort the packages in the most efficient manner
     calc_short_dist(third_delivery, 3, 0)
-    third_truck_dist = 0  
-
+    # print ('THIRD TRUCK:   ' + str(third_optimized_truck())) TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
     # Same as with the first two trucks
     # Runs the third truck through the functions in Dystances.py
     # O(N)
-    third_truck_pack_id = 0
-    for index in range(len(third_opt_ind())):
+    third_truck_dist = 0  
+    third_truck_count = 0
+    for iterate in range(len(third_opt_ind())):
         try:
-            # Calculate the total distance of the truck
-            third_truck_dist = check_distance(int(third_opt_ind()[index]), int(third_opt_ind()[index + 1]), third_truck_dist)
             # Calculate the distance of each pacakage along the route
-            package_delivery = check_third_truck_time(current_distance(int(third_opt_ind()[index]), int(third_opt_ind()[index + 1])))
-            third_optimized_truck()[third_truck_pack_id][10] = str(package_delivery)
-            get_hashtable().update(int(third_optimized_truck()[third_truck_pack_id][0]), third_delivery)
-            third_truck_pack_id += 1
-            # print ('Third truck ' + str(third_optimized_truck()[third_truck_pack_id][0]) + ' ' + str(third_optimized_truck()[third_truck_pack_id][10])) TEST PRINT TEST PRINT TEST PRINT TEST PRINT TEST PRINT 
+            if range(len(third_opt_ind())).index(iterate) == (len(third_opt_ind()) - 1):
+                # Calculate the total distance of the truck
+                third_truck_dist = check_distance(int(third_opt_ind()[iterate]), 0, third_truck_dist)
+                package_delivery = check_third_truck_time(current_distance(int(third_opt_ind()[iterate]), 0))
+            else:
+                # Calculate the total distance of the truck
+                third_truck_dist = check_distance(int(third_opt_ind()[iterate]), int(third_opt_ind()[iterate + 1]), third_truck_dist)
+                package_delivery = check_third_truck_time(current_distance(int(third_opt_ind()[iterate]), int(third_opt_ind()[iterate + 1])))
+            third_optimized_truck()[third_truck_count][10] = (str(package_delivery))
+            get_hashtable().update(int(third_optimized_truck()[third_truck_count][0]), third_delivery)
+            third_truck_count += 1
         except IndexError:
             pass
     return third_truck_dist

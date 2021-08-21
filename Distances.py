@@ -120,29 +120,36 @@ with open('Addresses.csv') as csvfile:
                     if current_distance(curr_loc, int(index[1])) <= low_val:
                         low_val = current_distance(curr_loc, int(index[1]))
                         new_loc = int(index[1])
-                    for index in truck_dist_list:
-                        if current_distance(curr_loc, int(index[1])) >= low_val:
-                            if truck_num == 1:
-                                first_opt_truck.append(index)
-                                first_opt_truck_ind.append(index[1])
-                                pop_value = truck_dist_list.index(index)
-                                truck_dist_list.pop(pop_value)
-                                curr_loc = new_loc
-                                calc_short_dist(truck_dist_list, 1, curr_loc)
-                            elif truck_num == 2:
-                                second_opt_truck.append(index)
-                                second_opt_truck_ind.append(index[1])
-                                pop_value = truck_dist_list.index(index)
-                                truck_dist_list.pop(pop_value)
-                                curr_loc = new_loc
-                                calc_short_dist(truck_dist_list, 2, curr_loc)
-                            elif truck_num == 3:
-                                third_opt_truck.append(index)
-                                third_opt_truck_ind.append(index[1])
-                                pop_value = truck_dist_list.index(index)
-                                truck_dist_list.pop(pop_value)
-                                curr_loc = new_loc
-                                calc_short_dist(truck_dist_list, 3, curr_loc)
+                for index in truck_dist_list:
+                    if current_distance(curr_loc, int(index[1])) == low_val:
+                        if index[0] == '15' or index[0] == '16' or index[0] == '34':
+                            first_opt_truck.insert(0, index)
+                            first_opt_truck_ind.append(index[1])
+                            pop_value = truck_dist_list.index(index)
+                            truck_dist_list.pop(pop_value)
+                            calc_short_dist(truck_dist_list, 1, curr_loc)
+                            continue
+                        if truck_num == 1:
+                            first_opt_truck.append(index)
+                            first_opt_truck_ind.append(index[1])
+                            pop_value = truck_dist_list.index(index)
+                            truck_dist_list.pop(pop_value)
+                            curr_loc = new_loc
+                            calc_short_dist(truck_dist_list, 1, curr_loc)
+                        elif truck_num == 2:
+                            second_opt_truck.append(index)
+                            second_opt_truck_ind.append(index[1])
+                            pop_value = truck_dist_list.index(index)
+                            truck_dist_list.pop(pop_value)
+                            curr_loc = new_loc
+                            calc_short_dist(truck_dist_list, 2, curr_loc)
+                        elif truck_num == 3:
+                            third_opt_truck.append(index)
+                            third_opt_truck_ind.append(index[1])
+                            pop_value = truck_dist_list.index(index)
+                            truck_dist_list.pop(pop_value)
+                            curr_loc = new_loc
+                            calc_short_dist(truck_dist_list, 3, curr_loc)
             except IndexError:
                 pass
     

@@ -45,11 +45,14 @@ with open('Full Package Data.csv') as csvfile:
         # Truck 1: Earliest times, co-delivery requirements, ZIP code proximity
         # Truck 2: Packages delayed until 9:05 with deadline by 10:30, some packages required to be on truck 2, ZIP code proximity
         # Truck 3: Remaining packages
-        truck1_id_list = [1, 4, 13, 14, 15, 16, 19, 20, 21, 24, 34, 39, 40] # 13 packages
+        truck1_id_list = [1, 4, 7, 13, 14, 15, 16, 19, 20, 21, 29, 34, 39, 40] # 14 packages
         truck2_id_list = [3, 5, 6, 8, 10, 18, 22, 25, 26, 30, 31, 32, 36, 37, 38] # 15 packages
-        truck3_id_list = [2, 7, 9, 11, 12, 17, 23, 27, 28, 29, 33, 35] # 12 packages
+        truck3_id_list = [2, 9, 11, 12, 17, 23, 24, 27, 28, 33, 35] # 11 packages
 
         if int(package_ID_value) in truck1_id_list:
+            if package_ID_value == '15':
+                first_truck.insert(0, value)
+                create_hash_table.add(key, value) 
             if not first_truck: # base case appends if empty set
                 first_truck.append(value)
                 create_hash_table.add(key, value) 
